@@ -1,0 +1,341 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Main Section Styling */
+.main {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url(https://media.istockphoto.com/id/1310384629/photo/solar-panel-cell-on-dramatic-sunset-sky-background-clean-alternative-power-energy-concept.jpg?s=612x612&w=0&k=20&c=HW8S4AbKe1fyEuu5E-XC4gwlIrUghNY6kaiS-gzDu0A=);
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+nav  {
+    height: 10vh;
+    width: 100%;
+    background-color:#87e5ef4b;
+    top:0%;
+    left:auto;
+    justify-content: right;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    position: fixed;
+    z-index: 100;
+}
+
+nav a {
+    color: white;
+    text-decoration:none;
+    font-size: 2em;    
+    margin: 0 15px;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;       
+    gap: 9px;
+    font-weight: 500;
+    margin-right: 20px;
+    display: inline-block;
+    transition: background 0.3s, color 0.3s;
+}
+
+nav a:hover {
+    background: rgba(191, 197, 201, 0.469);
+    text-decoration: none;
+    color: #000000;
+
+}    
+
+/* Dark Overlay */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.556); /* Darken for text contrast */
+}
+.main img{
+    width: 100%;
+    height: 100vh;
+}
+
+
+/*Text (Top Left) */
+.lefttext {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    z-index: 1;
+}
+
+/* Main Heading (Centered) */
+.imgtxt {
+    position: relative;
+    color: white;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    z-index: 1;
+    animation: fadeInUp 2s ease-out forwards;
+}
+
+/* Glowing effect for the text */
+
+
+/* Button Container inside the main section to prevent scrolling */
+.button-container button {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+
+}
+
+.button-container a button {
+    text-decoration: none;
+}
+
+
+/* Button Styling */
+.button-container button {
+    background-color: rgb(84, 142, 177);
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    color: white;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-decoration:none;
+    width: 300px;
+    height: 50px;
+}
+/* Hover Effects */
+button:hover {
+    background-color: #0b51b26f;
+    transform: scale(1.1); text-decoration:none;
+  }
+/* Fade-in Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    .nav-center a {
+        display: block;
+        margin: 10px 0;
+    }
+    .services-list {
+        flex-direction: column;
+        align-items: center;
+    }
+    .service-item {
+        width: 90%;
+    }
+}
+
+/* Ripple Button */
+.ripple-button {
+    background-color: rgb(228, 139, 157);
+    padding: 15px 30px;
+    border: none;
+    font-size: 1.2rem;
+    color: black;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    width: 17vh;
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Text inside the button */
+.ripple-button span {
+    position: relative;
+    z-index: 1;
+}
+
+/* Ripple effect */
+.ripple-button::before {
+    content: "";
+    position: absolute;
+    background-color: grey;
+    width: 0px;
+    height: 0px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    transition: width 1s, height 1s;
+    z-index: 0;
+}
+
+.ripple-button:hover::before {
+    width: 200px;
+    height: 200px;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .imgtxt {
+        font-size: 2rem;
+        padding: 0 10px;
+    }
+
+    .planbutton a button {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+
+    .blogbutton a {
+        font-size: 1rem;
+        padding: 8px 18px;
+    }
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Slideshow Styles */
+.slideshow-container {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.slides {
+    display: none;
+    width: 100%;
+}
+
+.slide-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    transition: 0.3s;
+    user-select: none;
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* blogs Section */
+#blogs {
+    padding: 2em;
+    text-align: center;
+}
+
+.blogs-title {
+    font-size: 2.5em;
+    color: #2c3e50;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.blogs-title::after {
+    content: '';
+    width: 80px;
+    height: 4px;
+    background: #3498db;
+    display: block;
+    margin: 0 auto;
+    border-radius: 2px;
+    margin-top: 10px;
+}
+
+.blogs-section {
+    background: #dbdb7889;
+}
+
+.blog-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2em;
+}
+
+.blog-card {
+    background: #f4f4f4;
+    padding: 1em;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.blog-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
