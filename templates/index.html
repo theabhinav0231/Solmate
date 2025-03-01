@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Info Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Solar Panel Feasibility Form</h1>
+        
+        <form id="solarForm">
+            <div class="question">
+                <p>1. We would like to access your location.</p>
+                <button type="button" onclick="getLocation()">Allow Location Access</button>
+                <p id="location"></p>
+            </div>
+
+            <div class="question">
+                <p>2. What is the area of your roof? (sq. meters)</p>
+                <input type="number" id="roof_area" required>
+            </div>
+
+            <div class="question">
+                <p>3. What is your home's average electricity consumption? (Rs.)</p>
+                <input type="number" id="monthly_bill" required>
+            </div>
+
+            <div class="question">
+                <p>4. What is the electricity rate in your area? (Rs./unit)</p>
+                <input type="number" id="electricity_rate" required>
+            </div>
+
+            <div class="question">
+                <p>5. What will you consider for excess energy generation?</p>
+                <label><input type="radio" name="energy_use" value="battery" required> Battery (off-grid)</label>
+                <label><input type="radio" name="energy_use" value="grid"> Sell excess to grid</label>
+            </div>
+
+            <div class="question">
+                <p>6. What is your approximate budget? (Rs.)</p>
+                <input type="number" id="budget" required>
+            </div>
+
+            <button type="submit">Generate Report</button>
+        </form>
+    </div>
+
+    <script>
+        let latitude, longitude;
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(async (position) => {
+                    latitude = position.coords.latitude;
+                    longitude = position.coords.longitude;
+                    
+                    // Fetch location name using OpenStreetMap API
+                    const response = await fetch(https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json);
+                    const data = await response.json();
+                    document.getElementById('location').innerText = data.display_name;
+                }, () => {
+                    alert("Location access denied.");
+                });
+            } else {
+                alert("Geolocation is not supported by your browser.");
+            }
+        }
+
+        document.getElementById("solarForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const roof_area = document.getElementById("roof_area").value;
+            const monthly_bill = document.getElementById("monthly_bill").value;
+            const electricity_rate = document.getElementById("electricity_rate").value;
+            const energy_use = document.querySelector('input[name="energy_use"]:checked').value;
+            const budget = document.getElementById("budget").value;
+            
+            const monthly_unit_consumption = monthly_bill / electricity_rate;
+            const daily_unit_consumption = monthly_unit_consumption / 30;
+            
+            const formData = {
+                latitude, longitude,
+                roof_area, monthly_bill, electricity_rate,
+                monthly_unit_consumption, daily_unit_consumption,
+                use_battery: energy_use === "battery",
+                budget
+            };
+            
+            fetch("http://127.0.0.1:5000/submit", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => alert("Report generated successfully!"))
+            .catch(error => alert("Error submitting data."));
+        });
+    </script>
+</body>
+</html>

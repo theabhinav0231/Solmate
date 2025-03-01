@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-powered Solar Rooftop Solutions</title>
+    <link rel="stylesheet" href="/static/css/homepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="main">
+        <nav class="nav-container">
+            <div class="nav-left">
+                <div class="lefttext">SOLMATE</div>
+                <!--<div class="sprw">By Sparrow</div>-->
+            </div>
+            <div class="nav-center">
+                <a href="#Home">Home</a>
+                <a href="#blogs">Blogs</a>
+            </div>
+        </nav>
+        <div class="overlay"></div>
+        <div class="imgtxt">
+            <h1>PLAN YOUR ROOFTOP<br>SOLAR INVESTMENT</h1>
+        </div>
+        <div class="button-container">
+            <a href="/quiz1" style="text-decoration: none;">
+                <button class="ripple-button"><span>GET STARTED</span></button>
+            </a>                 
+        </div>        
+    </div>   
+
+    <!-- Blogs Section -->
+    <section id="blogs" class="blogs-section">
+        <div class="blogs-heading">
+            <h2 class="blogs-title">BLOGS</h2>
+        </div>
+        
+        <div class="slideshow-container">
+            <div class="slides fade">
+                <img src="/static/images/blog 1.png" class="slide-img">
+            </div>
+            <div class="slides fade">
+                <img src="/static/images/blog 2.png" class="slide-img">
+            </div>
+            <div class="slides fade">
+                <img src="https://img.freepik.com/premium-photo/background-photovoltaic-cell-farm-solar-panels-field-eco-friendly-clean-energy_33799-14448.jpg" class="slide-img">
+            </div>
+            <a class="prev" onclick="plusSlides(-1)">❮</a>
+            <a class="next" onclick="plusSlides(1)">❯</a>
+        </div>
+     <br><br><br>
+        <div class="blog-grid">
+            <div class="blog-card">
+                <img src="/static/images/blog 1.png" alt="Blog 1">
+                <a href="https://www.pv-magazine-india.com/2024/04/02/india-is-seeing-record-demand-for-rooftop-solar-systems/" target="_blank" style="text-decoration: none;"><h2>India is seeing record demand for rooftop solar systems</h2></a>
+                <p>India is seeing record demand for rooftop solar both from residential and industrial consumers...</p>
+            </div>
+            <div class="blog-card">
+                <img src="/static/images/blog 2.png" alt="Blog 2">
+                <a href="https://www.thehindu.com/news/national/promise-of-zero-electricity-bill-fuels-pms-rooftop-solar-scheme-rollout/article68695120.ece" target="_blank" style="text-decoration: none;"><h2>With new ₹75,000-crore scheme, sun shines on rooftop solar installations</h2></a>
+                <p>Fine print includes fixed charges, need for loans for higher capacity installations...</p>
+            </div>
+            <div class="blog-card">
+                <img src="https://img.etimg.com/thumb/msid-118069749,width-300,height-225,imgsize-50462,resizemode-75/india-installing-100-gw-solar-capacity-will-inspire-nations-to-accelerate-energy-transition-nsefi.jpg" alt="Blog 3">
+                <a href="https://economictimes.indiatimes.com/industry/renewables/india-installing-100-gw-solar-capacity-will-inspire-nations-to-accelerate-energy-transition-nsefi/articleshow/118069723.cms" target="_blank" style="text-decoration: none;"><h2>India installing 100 GW solar capacity</h2></a>
+                <p>India's achievement of installing 100 gigawatts (GW) of solar capacity will inspire developed and developing nations...</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("slides");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1; }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 3000); 
+        }
+
+        function plusSlides(n) {
+            let slides = document.getElementsByClassName("slides");
+            slideIndex += n;
+            if (slideIndex > slides.length) { slideIndex = 1; }
+            if (slideIndex < 1) { slideIndex = slides.length; }
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex - 1].style.display = "block";
+        }
+    </script>
+</body>
+</html>

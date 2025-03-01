@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #2E86C1; }
+        ul { list-style-type: none; padding: 0; }
+        li { padding: 4px 0; }
+        .graph { margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <h1>Rooftop Solar Investment Report</h1>
+    <h2>System Specifications</h2>
+    <ul>
+        <li><strong>Installed Capacity:</strong> {{ installed_kw|round(2) }} kW</li>
+        <li><strong>Daily Electricity Generation:</strong> {{ daily_generation|round(2) }} kWh</li>
+        <li><strong>Annual Electricity Generation:</strong> {{ annual_generation|round(2) }} kWh</li>
+        <li><strong>Required Panel Area:</strong> {{ required_panel_area|round(2) }} m²</li>
+        <li><strong>Available Panel Area (70% of Roof):</strong> {{ available_area|round(2) }} m²</li>
+        <li><strong>Percentage of Roof Used:</strong> {{ area_used_percentage|round(2) }}%</li>
+        <li><strong>Effective Sun Hours (derived):</strong> {{ effective_sun_hours|round(2) }} kWh/kW/day</li>
+    </ul>
+    <h2>Cost Analysis</h2>
+    <ul>
+        <li><strong>Total Installation Cost:</strong> Rs. {{ total_cost|round(2)|intcomma }}</li>
+        <li><strong>Government Subsidy:</strong> Rs. {{ subsidy|round(2)|intcomma }}</li>
+        <li><strong>Total Cost after Subsidy:</strong> Rs. {{ total_cost_after_subsidy|round(2)|intcomma }}</li>
+    </ul>
+    <h2>Savings and Profit (Annual)</h2>
+    <ul>
+        <li><strong>Annual Savings:</strong> Rs. {{ annual_savings|round(2)|intcomma }}</li>
+        <li><strong>Grid Offloading Profit (if applicable):</strong> Rs. {{ grid_profit|round(2)|intcomma }}</li>
+    </ul>
+    <div class="graph">
+        <h2>Electricity Generation Graph (Monthly)</h2>
+        <img src="data:image/png;base64,{{ generation_graph }}" alt="Monthly Generation Graph"/>
+    </div>
+    <div class="graph">
+        <h2>ROI Graph (Cumulative Savings Over Years)</h2>
+        <img src="data:image/png;base64,{{ roi_graph }}" alt="ROI Graph"/>
+    </div>
+</body>
+</html>

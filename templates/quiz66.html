@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Type Quiz</title>
+
+    <style>
+       @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+body {
+    font-family: "Open Sans", sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+
+.container {
+    background: rgb(234, 224, 206);
+    padding: 20px;
+    width: 100%;
+    margin-top: 10%;
+    height: 100%;    
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.373);
+    text-align: center;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 50px;
+    color: #222;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+.sprw{
+    font-size: 20px;
+    margin-top: 2%;
+    color: #f9f9f9;
+    font-weight: 600;
+    margin-left: 0.5%;
+}
+p{
+    font-size: 20px;
+    color: grey;
+}
+
+.question-number {
+    font-size: 14px;
+    color: gray;
+}
+
+.progress-bar {
+    width: 70%;
+    margin-left: 16%;
+    background-color: rgb(173, 170, 170);
+    height: 11px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.progress {
+    width: 75%;
+    height: 100%;
+    background-color: orange;
+    border-radius: 5px;
+}
+
+button {
+    background:grey;
+    color: white;
+    font-size: 40px;
+    border: none;
+    padding: 10px;
+    width: 17%;
+    height:8%;
+    border-radius: 5px;
+    margin-top: 70px;
+    
+}
+button:hover{
+   background-color: #007BFF; 
+    
+}
+
+button.active {
+    background: #007BFF;
+    cursor: pointer;
+}
+.navbar {
+    background: orange;
+    padding: 15px 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;  /* Ensures left and right alignment */
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+/* Logo (Left-Aligned) */
+.nav-logo {
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 20px; /* Ensures it touches the left end */
+}
+
+/* Navigation Links (Right-Aligned) */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 55px;
+    margin-left: auto;
+    padding-right: 50px; /* Ensures links touch the right end */
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+.webname h1{
+    font-size: 70px;
+    font-weight: 600;
+}
+
+.userdata input{
+    width: 16em;
+    height: 3em;
+    font-size: 30px;
+}
+h1{
+    font-weight: 200;
+    font-size: 35px;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="nav-logo">SOLMATE</div>
+            <div class="sprw">By Sparrow</div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>                
+            </ul>
+        </nav>
+        <div class="webname">
+            <h1>SOLMATE</h1>
+        </div>        
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        
+        <h1>What is your average electricity (/unit) rate in your area?</h1>
+        
+        <!-- Form to submit electricity rate -->
+        <form action="/quiz6" method="POST">
+            <div class="userdata">
+                <label for="Rs"></label>
+                <input type="text" name="electricity_rate" id="electricity_rate" placeholder="Enter your electricity (unit) rate" required>
+                <span id="error-message" style="color: red;"></span>
+            </div>
+            
+            <a href="/quiz5">
+                <button type="button" id="prvBtn">Previous ←</button>
+            </a>  
+            <button type="submit" id="nextBtn">Next →</button>
+        </form>
+                  
+    </div>
+
+    <script>
+        document.getElementById("nextBtn").addEventListener("click", function(event) {
+            let inputField = document.getElementById("electricityRate");
+            let errorMessage = document.getElementById("error-message");
+
+            if (inputField.value.trim() === "") {
+                errorMessage.textContent = "Please enter your electricity rate.";
+                inputField.focus();
+                event.preventDefault(); // Prevent action if input is empty
+            } else {
+                errorMessage.textContent = "";
+                // Redirect or proceed with the next step
+                alert("Proceeding to the next step...");
+                // window.location.href = "nextpage.html"; // Uncomment if you want to navigate
+            }
+        });
+    </script>
+</body>
+</html>
